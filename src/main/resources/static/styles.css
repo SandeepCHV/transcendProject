@@ -1,0 +1,13 @@
+
+
+body{
+    color: rgb(224, 228, 236);
+    background-color: #212d5a;
+}
+
+
+.box{
+height: 100px;
+width: 300px;
+background-color: aliceblue;
+}
