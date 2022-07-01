@@ -4,6 +4,7 @@
 <head> 
     <title>Template Selection</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/styles.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/js/jquery-3.6.0.js}"></script>
     <script th:inline="javascript">
@@ -14,22 +15,80 @@
     		});
     	});
 	</script>
+	<style>
+
+    
+.boxa{
+width: 210px;
+height: 40px;
+background-color: rgb(247,100,58);
+opacity: 1;
+}
+
+.boxb{
+width: 210px;
+height: 40px;
+background-color: rgb(247,100,58);
+opacity: 1;
+}
+.boxc{
+width: 210px;
+height: 40px;
+background-color: rgb(247,100,58);
+opacity: 1;
+}
+.boxd{
+width: 210px;
+height: 40px;
+background-color: rgb(247,100,58);
+opacity: 1;
+}
+
+
+
+.button {
+  background-color: rgb(247,100,58);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  
+  text-decoration: none;
+  display: inline-block;
+
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+textarea {
+        resize: none;
+      }
+</style>
 </head>
 <body>
-	<div>
-        <a href="https://www.transcendstreet.com" target="_main"><img
-                src="https://www.transcendstreet.com/wp-content/uploads/2020/09/Transcend-Logo-PNG-1000x500-1.png"
-                alt="error" width="250px"></a>
+	<div class="boxa"  style="position:absolute; left:30px; top:190px;"></div>
+
+	<div class="boxb"  style="position:absolute; left:30px; top:290px;"></div>
+
+	<div class="boxc"  style="position:absolute; right:100px; top:190px;"></div>
+	
+	<div class="boxd"  style="position:absolute; right:100px; top:290px;"></div>
+	<div class="box">
+        <!-- for initial logo -->
+        <div style="left: 100px;">
+            <a href="https://www.transcendstreet.com" target="_main"><img
+                    src="/logo.JPG"
+                    alt="error" width="250px"></a>
+		</div>
 	</div>
 	    <div>
 
 
-        <form action="">
+        <form action="" method="post">
 
 
-            <div style="position:absolute; left:40px; top:200px;">
+            <div style="position:absolute; left:40px; top:200px; larger;">
                 <label for="Series">
-                    Series
+                    Series&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<select class="form-control" name="example" id="example">
          				<option value="NONE">----Select----</option>
     					<option th:each="seriesNo : ${templateList}" th:value="${seriesNo}"
@@ -43,7 +102,7 @@
             <br>
 
 
-            <div style="position:absolute; left:32px; top:300px;">
+            <div style="position:absolute; left:40px; top:300px;">
                 <label for="Message">
                     Message
 
@@ -61,36 +120,34 @@
 
 
 
-            <div style="position:relative; left:450px; top:20px;">
-                <label for="Template">Template
-                    <textarea style="overflow:auto;resize:none" name="Template" id="Template" cols="30" rows="10">
+            <div>
+                 
+                        
+    <textarea rows="15" cols="60" placeholder="                        TEMPLATE" style="position:absolute; left:450px; top:180px;"></textarea>
 
-                     </textarea>
-                </label>
-            </div>
-
-
-           <div  style="position:relative; left:1000px; top:-118px; ">
-
-            <label for="environment">
-                Environment
+                </div>
 
 
-                <select name="environment" id="environment">
+           <div style="position:absolute; right:150px; top:205px; ">
 
-                    <option value="JD">JD</option>
-                    <option value="RC">RC</option>
-                    <option value="RS">RS</option>
-                </select>
+                    <label for="environment">
+                        Environment
+
+
+                        <select name="environment" id="environment">
+                            <option value="A300">A300</option>
+                            <option value="B200">B200</option>
+                            <option value="C250">C250</option>
+                        </select>
 
 
 
-            </label>
-             </div>
+                    </label>
+                </div>
 
 
 
-            <div style="position:absolute; left:1010px; top:300px;">
+            <div style="position:absolute; right:150px; top:300px;">
             <label for="queue">
                 Queue
 
@@ -106,19 +163,14 @@
 
             </label>
             </div>
-			<input type="submit">
+			<h1>
+                <div style="position: absolute; right:800px; top:510px; ">
+                    <input type="button" class="button" id="btnShowMsg" value="SUBMIT" />
+                    
+                </div>
+
+            </h1>
         </form>
     </div>
- <div class="container">
-  <table class="table table-striped">
-   <thead class="thead-dark">
-    <th scope="row">ID</th>
-    <th scope="row">Series Number</th>
-    <th scope="row">Message Number</th>
-    <th scope="row">Template</th>
-    <th scope="row">Template Name</th>
-   </thead>
-  </table>
- </div>
 </body>
 </html>
