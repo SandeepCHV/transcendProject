@@ -34,34 +34,32 @@
 	<style>
 
 ::placeholder{
-
 color: rgb(224,232,254);
-
 font-size: 50px;
-
-}    
+text-align: center;
+}   
 .boxa{
-width: 210px;
-height: 40px;
+width: 230px;
+height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
 }
 
 .boxb{
-width: 210px;
-height: 40px;
+width: 230px;
+height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
 }
 .boxc{
 width: 210px;
-height: 40px;
+height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
 }
 .boxd{
 width: 210px;
-height: 40px;
+height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
 }
@@ -87,13 +85,7 @@ textarea {
 </style>
 </head>
 <body>
-	<div class="boxa"  style="position:absolute; left:30px; top:190px;"></div>
-
-	<div class="boxb"  style="position:absolute; left:30px; top:290px;"></div>
-
-	<div class="boxc"  style="position:absolute; right:100px; top:190px;"></div>
 	
-	<div class="boxd"  style="position:absolute; right:100px; top:290px;"></div>
 	<div class="box">
         <!-- for initial logo -->
         <div style="left: 100px;">
@@ -108,9 +100,9 @@ textarea {
         <form action="" method="post">
 
 
-            <div style="position:absolute; left:40px; top:200px; larger;">
+            <div class="boxa" style="position:relative; left:40px; top:125px; font-size: larger;text-align: center;">
                 <label for="Series">
-                    Series&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    Series
 					<select class="form-control" name="example" id="example">
          				<option value="NONE">----Select----</option>
     					<option th:each="seriesNo : ${templateList}" th:value="${seriesNo}"
@@ -124,7 +116,7 @@ textarea {
             <br>
 
 
-            <div style="position:absolute; left:40px; top:300px;">
+            <div class="boxb" style="position:relative; left:40px; top:225px;font-size: larger;text-align: center;">
                 <label for="Message">
                     Message
 
@@ -139,26 +131,13 @@ textarea {
 
 
 
-            <div>
-                 
-                        
-<textarea rows="15" cols="60" placeholder="            
-
-    TEMPLATE"
-
-   
-
-   
-
-   
-
-   
-
-    style="position:absolute; left:450px; top:180px;"></textarea>
-                </div>
+            <div>        
+				<textarea rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
+						style="position:absolute; left:450px; top:180px;"></textarea>
+            </div>
 
 
-           <div style="position:absolute; right:150px; top:205px; ">
+           <div class="boxc" style="position:relative; left: 1200px; top:55px;font-size: larger; text-align: center; ">
 
                     <label for="environment">
                         Environment
@@ -177,7 +156,7 @@ textarea {
 
 
 
-            <div style="position:absolute; right:150px; top:300px;">
+            <div class="boxd" style="position:relative; left: 1200px; top:167px;font-size: larger;text-align: center;">
             <label for="queue">
                 Queue
 
@@ -194,7 +173,7 @@ textarea {
             </label>
             </div>
 			<h1>
-                <div style="position: absolute; right:800px; top:510px; ">
+                <div style="position: relative; left:600px; top:240px; ">
                     <input type="button" class="button" id="btnShowMsg" value="SUBMIT" />
                     
                 </div>
