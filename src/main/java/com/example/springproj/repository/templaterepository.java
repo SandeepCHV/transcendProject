@@ -12,6 +12,6 @@ public interface templaterepository extends CrudRepository<messagetemplate, Inte
 	@Query("SELECT DISTINCT a.seriesnumber FROM messagetemplate a")
     List<String> findDistinctSeriesNo();
 	
-	@Query("SELECT a.messagenumber FROM messagetemplate a")
-	List<String> findMessageNumbers();
+	@Query("SELECT a.messagenumber FROM messagetemplate a WHERE a.seriesnumber = :seriesNo")
+	List<String> findMessageNumbers(int seriesNo);
 }

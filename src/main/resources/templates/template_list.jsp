@@ -11,13 +11,35 @@
     	$(document).ready(function(){
     		$('#example').change(function(){
     			var seriesId = $(this).val();
-    			alert(seriesId);
+    			$.ajax({
+    				url: 'http://localhost:8080/template/getMessage',
+                    type:'POST',
+                     data:{
+                        seriesId:seriesId
+                     } ,      
+                    success:function(data){
+                        
+                        var s='';
+                        s=s+'<option value="">---- Select ----</option>';
+                        for(var i=0;i<data.length;i++){
+                            s+='<option value="'+data[i]+'">'+data[i]+'</option>';
+                        }
+                        console.log(s)  
+                        $('#example2').html(s);
+                    } 
+    			});
     		});
     	});
 	</script>
 	<style>
 
-    
+::placeholder{
+
+color: rgb(224,232,254);
+
+font-size: 50px;
+
+}    
 .boxa{
 width: 210px;
 height: 40px;
@@ -109,9 +131,6 @@ textarea {
 
                     <select class="form-control" name="example2" id="example2">
          				<option value="NONE">----Select----</option>
-    					<option th:each="messageNo : ${messageList}" th:value="${messageNo}"
-        					th:text="${messageNo}">
-    					</option>
     				</select>
 
                 </label>
@@ -123,8 +142,19 @@ textarea {
             <div>
                  
                         
-    <textarea rows="15" cols="60" placeholder="                        TEMPLATE" style="position:absolute; left:450px; top:180px;"></textarea>
+<textarea rows="15" cols="60" placeholder="            
 
+    TEMPLATE"
+
+   
+
+   
+
+   
+
+   
+
+    style="position:absolute; left:450px; top:180px;"></textarea>
                 </div>
 
 

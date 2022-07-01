@@ -3,7 +3,7 @@ package com.example.springproj.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+//import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,8 +28,9 @@ public class templateserviceimplementation implements templateservice{
 	}
 	
 	@Override
-	public List<String> getMessageNo(){
-		return (List<String>)temp.findMessageNumbers();
+	public List<String> getMessageNo(int seriesNo){
+		System.out.println("seriesNo: " + seriesNo);
+		return (List<String>)temp.findMessageNumbers(seriesNo);
 	}
 }
 
