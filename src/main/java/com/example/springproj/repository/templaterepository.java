@@ -14,4 +14,7 @@ public interface templaterepository extends CrudRepository<messagetemplate, Inte
 	
 	@Query("SELECT a.messagenumber FROM messagetemplate a WHERE a.seriesnumber = :seriesNo")
 	List<String> findMessageNumbers(int seriesNo);
+	
+	@Query("SELECT a.template FROM messagetemplate a WHERE a.messagenumber = :messageNo")
+	String findTemplate(int messageNo);
 }

@@ -9,5 +9,5 @@ public interface templateservice {
 	public List<messagetemplate> getAllTemplates();
 	public List<String> getAllSeriesNo();
 	public List<String> getMessageNo(int seriesNo);
-
+	public String getTemplate(int messageNo);
 }

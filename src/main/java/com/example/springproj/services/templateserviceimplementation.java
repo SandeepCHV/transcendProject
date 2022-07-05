@@ -32,6 +32,12 @@ public class templateserviceimplementation implements templateservice{
 		System.out.println("seriesNo: " + seriesNo);
 		return (List<String>)temp.findMessageNumbers(seriesNo);
 	}
+	
+	@Override
+	public String getTemplate(int messageNo) {
+		System.out.println("messageNo: "+messageNo);
+		return (String)temp.findTemplate(messageNo);
+	}
 }
 
 //<select class="form-control" name="example" id="example">

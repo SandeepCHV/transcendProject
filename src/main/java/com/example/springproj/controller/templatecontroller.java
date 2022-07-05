@@ -41,6 +41,13 @@ public class templatecontroller {
         List<String> messageList = temp.getMessageNo(Integer.parseInt(seriesId));
         return messageList;
     }
+	
+	@ResponseBody
+    @RequestMapping(value = "/getTemplate", method = RequestMethod.POST)
+    public String getTemplate(@RequestParam String messageId) {
+        String template = temp.getTemplate(Integer.parseInt(messageId));
+        return template;
+    }
 }
 
 //<%@ page language="java" contentType="text/html; charset=ISO-8859-1"

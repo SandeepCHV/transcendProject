@@ -20,12 +20,31 @@
                     success:function(data){
                         
                         var s='';
-                        s=s+'<option value="">---- Select ----</option>';
+                        s=s+'<option value="">----Select----</option>';
                         for(var i=0;i<data.length;i++){
                             s+='<option value="'+data[i]+'">'+data[i]+'</option>';
                         }
                         console.log(s)  
                         $('#example2').html(s);
+                    } 
+    			});
+    		});
+    		$('#example2').change(function(){
+    			var messageId = $(this).val();
+    			$.ajax({
+    				url: 'http://localhost:8080/template/getTemplate',
+                    type:'POST',
+                     data:{
+                        messageId:messageId
+                     } ,      
+                    success:function(data){
+                        
+                        var r='';
+                        for(var i=0;i<data.length;i++){
+                            r+=data[i];
+                        }
+                        console.log(r)  
+                        $('#text1').html(r);
                     } 
     			});
     		});
@@ -132,7 +151,7 @@ textarea {
 
 
             <div>        
-				<textarea rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
+				<textarea id="text1" rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
 						style="position:absolute; left:450px; top:180px;"></textarea>
             </div>
 
