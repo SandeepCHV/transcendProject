@@ -48,10 +48,37 @@
                     } 
     			});
     		});
+    		$('#environment').change(function(){
+    			var envname = $(this).val();
+    			$.ajax({
+    				url: 'http://localhost:8080/template/getQueue',
+                    type:'POST',
+                     data:{
+                        envname:envname
+                     } ,      
+                    success:function(data){
+                        
+                        var q='';
+                        q=q+'<option value="">----Select----</option>';
+                        for(var i=0;i<data.length;i++){
+                            q+='<option value="'+data[i]+'">'+data[i]+'</option>';
+                        }
+                        console.log(q)  
+                        $('#queue').html(q);
+                    } 
+    			});
+    		});
     	});
 	</script>
 	<style>
-
+html,body
+{
+width: 100%;
+height: 100%;
+margin: 0px;
+padding: 0px;
+overflow-x: hidden;
+}
 ::placeholder{
 color: rgb(224,232,254);
 font-size: 50px;
@@ -163,9 +190,10 @@ textarea {
 
 
                         <select name="environment" id="environment">
-                            <option value="A300">A300</option>
-                            <option value="B200">B200</option>
-                            <option value="C250">C250</option>
+                            <option value="NONE">---Select---</option>
+    						<option th:each="envname : ${envList}" th:value="${envname}"
+        					th:text="${envname}">
+    						</option>
                         </select>
 
 
@@ -181,10 +209,7 @@ textarea {
 
 
                 <select name="queue" id="queue">
-
-                    <option value="cash">cash</option>
-                    <option value="cheque">cheque</option>
-                    <option value="jaadu">jaadu</option>
+                	<option value="NONE">----Select----</option>
                 </select>
 
 

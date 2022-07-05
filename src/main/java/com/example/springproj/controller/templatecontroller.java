@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.springproj.model.messagetemplate;
+import com.example.springproj.services.queueservice;
 import com.example.springproj.services.templateservice;
 
 @Controller
@@ -23,13 +24,18 @@ public class templatecontroller {
 	@Autowired
 	templateservice temp;
 	
+	@Autowired
+	queueservice queue;
+	
 	@ResponseBody
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView("template_list");
 	    //List<messagetemplate> templateList = temp.getAllTemplates();
 	    List<String> templateList = temp.getAllSeriesNo();
+	    List<String> envList = queue.getEnvNames();
 	    model.addObject("templateList", templateList);
+	    model.addObject("envList", envList);
 	    for(String x:templateList)
 	    	System.out.println(x);
 	    return model;
@@ -48,6 +54,14 @@ public class templatecontroller {
         String template = temp.getTemplate(Integer.parseInt(messageId));
         return template;
     }
+	
+	@ResponseBody
+    @RequestMapping(value = "/getQueue", method = RequestMethod.POST)
+    public List<String> getQueue(@RequestParam String envname) {
+        List<String> queues = queue.getQueueNames(envname);
+        return queues;
+    }
+
 }
 
 //<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
