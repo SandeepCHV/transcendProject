@@ -11,6 +11,7 @@
     	$(document).ready(function(){
     		$('#example').change(function(){
     			var seriesId = $(this).val();
+    			alert(seriesId);
     			$.ajax({
     				url: 'http://localhost:8080/template/getMessage',
                     type:'POST',
@@ -27,6 +28,15 @@
                         console.log(s)  
                         $('#example2').html(s);
                     } 
+    			});
+    			$.ajax({
+    				url: 'http://localhost:8080/template/publishMessage',
+                    type:'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        "source":"Sandeep",
+                        "message":$('#example').val()
+                     }) , 
     			});
     		});
     		$('#example2').change(function(){
