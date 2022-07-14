@@ -11,7 +11,6 @@
     	$(document).ready(function(){
     		$('#example').change(function(){
     			var seriesId = $(this).val();
-    			alert(seriesId);
     			$.ajax({
     				url: 'http://localhost:8080/template/getMessage',
                     type:'POST',
@@ -28,15 +27,6 @@
                         console.log(s)  
                         $('#example2').html(s);
                     } 
-    			});
-    			$.ajax({
-    				url: 'http://localhost:8080/template/publishMessage',
-                    type:'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                        "source":"Sandeep",
-                        "message":$('#example').val()
-                     }) , 
     			});
     		});
     		$('#example2').change(function(){
@@ -78,66 +68,20 @@
                     } 
     			});
     		});
+    		$('#queue').change(function(){
+    			$.ajax({
+    				url: 'http://localhost:8080/template/publishMessage',
+                    type:'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        "source":"Sandeep",
+                        "message":$('#text1').val()
+                     }) , 
+    			});
+    		});
     	});
 	</script>
 	<style>
-html,body
-{
-width: 100%;
-height: 100%;
-margin: 0px;
-padding: 0px;
-overflow-x: hidden;
-}
-::placeholder{
-color: rgb(224,232,254);
-font-size: 50px;
-text-align: center;
-}   
-.boxa{
-width: 230px;
-height: 27px;
-background-color: rgb(247,100,58);
-opacity: 1;
-}
-
-.boxb{
-width: 230px;
-height: 27px;
-background-color: rgb(247,100,58);
-opacity: 1;
-}
-.boxc{
-width: 210px;
-height: 27px;
-background-color: rgb(247,100,58);
-opacity: 1;
-}
-.boxd{
-width: 210px;
-height: 27px;
-background-color: rgb(247,100,58);
-opacity: 1;
-}
-
-
-
-.button {
-  background-color: rgb(247,100,58);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  
-  text-decoration: none;
-  display: inline-block;
-
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-textarea {
-        resize: none;
-      }
 </style>
 </head>
 <body>
