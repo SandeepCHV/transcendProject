@@ -84,6 +84,14 @@ public class templatecontroller {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public ModelAndView add( @RequestParam String template){
+		ModelAndView model = new ModelAndView("submit");
+		model.addObject("message", template);
+		return model;
+	}
 
 }
 

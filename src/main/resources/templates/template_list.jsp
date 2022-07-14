@@ -81,8 +81,6 @@
     		});
     	});
 	</script>
-	<style>
-</style>
 </head>
 <body>
 	
@@ -97,7 +95,7 @@
 	    <div>
 
 
-        <form action="" method="post">
+        <form method="post" th:action="@{/template/add/}" th:object="${template}">
 
 
             <div class="boxa" style="position:relative; left:40px; top:125px; font-size: larger;text-align: center;">
@@ -133,7 +131,7 @@
 
             <div>        
 				<textarea id="text1" rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
-						style="position:absolute; left:450px; top:180px;"></textarea>
+						style="position:absolute; left:450px; top:180px;" name ="template"></textarea>
             </div>
 
 
@@ -172,7 +170,7 @@
             </div>
 			<h1>
                 <div style="position: relative; left:600px; top:240px; ">
-                    <input type="button" class="button" id="btnShowMsg" value="SUBMIT" />
+                    <input type="submit" class="button" id="btnShowMsg" value="SUBMIT" />
                     
                 </div>
 

@@ -67,5 +67,13 @@ public class messagetemplate {
 	public void setTemplatename(String templatename) {
 		this.templatename = templatename;
 	}
+
+	@Override
+	public String toString() {
+		return "messagetemplate [id=" + id + ", seriesnumber=" + seriesnumber + ", messagenumber=" + messagenumber
+				+ ", template=" + template + ", templatename=" + templatename + "]";
+	}
+	
+	
 	
 }
