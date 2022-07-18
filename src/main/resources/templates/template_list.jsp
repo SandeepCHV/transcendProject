@@ -69,6 +69,16 @@
     			});
     		});
     		$('#btnShowMsg').click(function(){
+    			var env = $('#environment').val();
+    			var queue = $('#queue').val();
+    			$.ajax({
+    				url: 'http://localhost:8080/template/getEnvQueue',
+                    type:'POST',
+                    data:{
+                        env:env,
+                        queue:queue
+                     } , 
+    			});
     			$.ajax({
     				url: 'http://localhost:8080/template/publishMessage',
                     type:'POST',
@@ -98,7 +108,7 @@
         <form method="get" th:action="@{/template}" th:object="${template}">
 
 
-            <div class="boxa" style="position:relative; left:40px; top:125px; font-size: larger;text-align: center;">
+            <div class="boxa" style=" font-size: larger;text-align: center;">
                 <label for="Series">
                     Series
 					<select required class="form-control" name="example" id="example">
@@ -114,7 +124,7 @@
             <br>
 
 
-            <div class="boxb" style="position:relative; left:40px; top:225px;font-size: larger;text-align: center;">
+            <div class="boxb" style="font-size: larger;text-align: center;">
                 <label for="Message">
                     Message
 
@@ -130,12 +140,12 @@
 
 
             <div>        
-				<textarea required id="text1" rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
-						style="position:absolute; left:450px; top:180px;" name ="template"></textarea>
+				<textarea required id="text1" rows="18" cols="65" text-align:center; placeholder="TEMPLATE"
+						name ="template"></textarea>
             </div>
 
 
-           <div class="boxc" style="position:relative; left: 1200px; top:55px;font-size: larger; text-align: center; ">
+           <div class="boxc" style=" font-size: larger; text-align: center; ">
 
                     <label for="environment">
                         Environment
@@ -155,7 +165,7 @@
 
 
 
-            <div class="boxd" style="position:relative; left: 1200px; top:167px;font-size: larger;text-align: center;">
+            <div class="boxd" style="font-size: larger;text-align: center;">
             <label for="queue">
                 Queue
 
@@ -169,7 +179,7 @@
             </label>
             </div>
 			<h1>
-                <div style="position: relative; left:600px; top:240px; ">
+                <div>
                     <input type="submit" class="button" id="btnShowMsg" value="SUBMIT" />
                     
                 </div>

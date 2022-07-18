@@ -1,38 +1,36 @@
+html,body
+{
+
+height: 100%;
+margin: 0%;
+padding: 0%;
+color: rgb(255, 255, 255);
+background-color:rgb(36,64,138);
 
 
-
-
-body{
-    color: rgb(255, 255, 255);
-    background-color:rgb(36,64,138);
 }
 
 
 .box{
 height: 100px;
-width: 1600px;
 background-color: rgb(224,232,254);
-position: relative;left: -8px;top: -8px;
+
 }
 
-html,body
-{
-width: 100%;
-height: 100%;
-margin: 0px;
-padding: 0px;
-overflow-x: hidden;
-}
 ::placeholder{
 color: rgb(224,232,254);
 font-size: 50px;
 text-align: center;
 }   
+
 .boxa{
 width: 230px;
 height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
+position:absolute;
+left:40px;
+top:225px;
 }
 
 .boxb{
@@ -40,35 +38,53 @@ width: 230px;
 height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
+position:absolute;
+left:40px;
+top:425px;
 }
 .boxc{
 width: 210px;
 height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
+position:absolute;
+left: 1200px; 
+top:225px;
 }
+
 .boxd{
 width: 210px;
 height: 27px;
 background-color: rgb(247,100,58);
 opacity: 1;
+position:absolute;
+left: 1200px;
+top:425px;
 }
-
-
 
 .button {
   background-color: rgb(247,100,58);
   border: none;
   color: white;
   padding: 15px 32px;
-  
+
   text-decoration: none;
   display: inline-block;
 
   margin: 4px 2px;
   cursor: pointer;
+position: absolute;
+left:600px;
+top:500px;
 }
 
 textarea {
         resize: none;
+        position:absolute; left:450px; top:180px;
+
       }
+@media screen and (max-width: 1200px) {
+  .box{
+  width: 1450px;
+  }
+  }

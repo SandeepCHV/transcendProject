@@ -27,6 +27,8 @@ import com.example.springproj.services.templateservice;
 @RequestMapping(value="/template")
 public class templatecontroller {
 	
+	String a = "";
+	
 	@Autowired
 	templateservice temp;
 	
@@ -74,10 +76,18 @@ public class templatecontroller {
     }
 	
 	@ResponseBody
+	@RequestMapping(value="/getEnvQueue", method = RequestMethod.POST)
+	public void changeQueue(@RequestParam String env, @RequestParam String queue)
+	{
+		a = "CONSUMER.QUEUE";
+		System.out.println(a+env+queue);
+	}
+	
+	@ResponseBody
 	@PostMapping("/publishMessage")
 	public ResponseEntity<String> publishMessage(@RequestBody SystemMessage systemMessage){
 		try {
-			jmsTemplate.convertAndSend("CONSUMER.QUEUE", systemMessage);
+			jmsTemplate.convertAndSend(a, systemMessage);
 			return new ResponseEntity<>("Sent", HttpStatus.OK);
 		}
 		catch(Exception e) {
