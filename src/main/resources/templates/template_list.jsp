@@ -57,18 +57,18 @@
                         envname:envname
                      } ,      
                     success:function(data){
-                        
+                        var temp = data[0].split(',');
                         var q='';
                         q=q+'<option value="">----Select----</option>';
-                        for(var i=0;i<data.length;i++){
-                            q+='<option value="'+data[i]+'">'+data[i]+'</option>';
+                        for(var i=0;i<temp.length;i++){
+                            q+='<option value="'+temp[i]+'">'+temp[i]+'</option>';
                         }
                         console.log(q)  
                         $('#queue').html(q);
                     } 
     			});
     		});
-    		$('#queue').change(function(){
+    		$('#btnShowMsg').click(function(){
     			$.ajax({
     				url: 'http://localhost:8080/template/publishMessage',
                     type:'POST',
@@ -95,14 +95,14 @@
 	    <div>
 
 
-        <form method="post" th:action="@{/template/add/}" th:object="${template}">
+        <form method="get" th:action="@{/template}" th:object="${template}">
 
 
             <div class="boxa" style="position:relative; left:40px; top:125px; font-size: larger;text-align: center;">
                 <label for="Series">
                     Series
-					<select class="form-control" name="example" id="example">
-         				<option value="NONE">----Select----</option>
+					<select required class="form-control" name="example" id="example">
+         				<option value="">----Select----</option>
     					<option th:each="seriesNo : ${templateList}" th:value="${seriesNo}"
         					th:text="${seriesNo}">
     					</option>
@@ -119,8 +119,8 @@
                     Message
 
 
-                    <select class="form-control" name="example2" id="example2">
-         				<option value="NONE">----Select----</option>
+                    <select required class="form-control" name="example2" id="example2">
+         				<option value="">----Select----</option>
     				</select>
 
                 </label>
@@ -130,7 +130,7 @@
 
 
             <div>        
-				<textarea id="text1" rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
+				<textarea required id="text1" rows="15" cols="60" text-align:center; placeholder="TEMPLATE"
 						style="position:absolute; left:450px; top:180px;" name ="template"></textarea>
             </div>
 
@@ -141,8 +141,8 @@
                         Environment
 
 
-                        <select name="environment" id="environment">
-                            <option value="NONE">---Select---</option>
+                        <select required name="environment" id="environment">
+                            <option value="">---Select---</option>
     						<option th:each="envname : ${envList}" th:value="${envname}"
         					th:text="${envname}">
     						</option>
@@ -160,8 +160,8 @@
                 Queue
 
 
-                <select name="queue" id="queue">
-                	<option value="NONE">----Select----</option>
+                <select required name="queue" id="queue">
+                	<option value="">----Select----</option>
                 </select>
 
 
