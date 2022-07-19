@@ -68,7 +68,8 @@
                     } 
     			});
     		});
-    		$('#btnShowMsg').click(function(){
+    		$("form").submit(function(){
+    			alert("Message Sent");
     			var env = $('#environment').val();
     			var queue = $('#queue').val();
     			$.ajax({
