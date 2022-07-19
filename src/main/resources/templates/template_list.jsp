@@ -9,6 +9,7 @@
     <script type="text/javascript" th:src="@{/js/jquery-3.6.0.js}"></script>
     <script th:inline="javascript">
     	$(document).ready(function(){
+    		$("textarea").prop('disabled', true);
     		$('#example').change(function(){
     			var seriesId = $(this).val();
     			$.ajax({
@@ -47,6 +48,7 @@
                         $('#text1').html(r);
                     } 
     			});
+    			$("textarea").prop('disabled', false);
     		});
     		$('#environment').change(function(){
     			var envname = $(this).val();
