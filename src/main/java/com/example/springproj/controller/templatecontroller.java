@@ -2,6 +2,7 @@ package com.example.springproj.controller;
 
 import java.util.List;
 
+import org.apache.activemq.command.ActiveMQTextMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,9 @@ import com.example.springproj.services.templateservice;
 @RequestMapping(value="/template")
 public class templatecontroller {
 	
-	String a = "";
+	String a = "CONSUMER.QUEUE";
 	String b = "";
+	String c = "";
 	
 	@Autowired
 	templateservice temp;
@@ -82,14 +84,20 @@ public class templatecontroller {
 	{
 		a = "CONSUMER.QUEUE";
 		b = "dynamicQueues/"+queue+"."+env;
-		System.out.println(a+"\n"+b);
+		c = queue+"."+env;
+		System.out.println(b+"\n"+c);
 	}
+	
+	//"dynamicQueues/swift.jpm.q.dev"
 	
 	@ResponseBody
 	@PostMapping("/publishMessage")
 	public ResponseEntity<String> publishMessage(@RequestBody SystemMessage systemMessage){
 		try {
-			jmsTemplate.convertAndSend(b, systemMessage);
+			ActiveMQTextMessage text = new ActiveMQTextMessage();
+			text.setText(systemMessage.getMessage());
+			System.out.println(b+"\n"+c);
+			jmsTemplate.convertAndSend(b, text);
 			return new ResponseEntity<>("Sent", HttpStatus.OK);
 		}
 		catch(Exception e) {

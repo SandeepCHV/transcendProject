@@ -45,7 +45,7 @@
                             r+=data[i];
                         }
                         console.log(r)  
-                        $('#text1').html(r);
+                        $('#text1').val(r);
                     } 
     			});
     			$("textarea").prop('disabled', false);

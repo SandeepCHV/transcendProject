@@ -13,7 +13,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 @EnableJms
 public class JmsConfig {
 	
-//	@Value("${active-mq.broker-url}")
+//	@Value("${activemq.broker-url}")
 //    private String brokerUrl;
 //
 //    @Bean
