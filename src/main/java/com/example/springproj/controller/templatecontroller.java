@@ -88,8 +88,6 @@ public class templatecontroller {
 		System.out.println(b+"\n"+c);
 	}
 	
-	//"dynamicQueues/swift.jpm.q.dev"
-	
 	@ResponseBody
 	@PostMapping("/publishMessage")
 	public ResponseEntity<String> publishMessage(@RequestBody SystemMessage systemMessage){
@@ -98,6 +96,7 @@ public class templatecontroller {
 			text.setText(systemMessage.getMessage());
 			System.out.println(b+"\n"+c);
 			jmsTemplate.convertAndSend(b, text);
+			jmsTemplate.convertAndSend(c, text);
 			return new ResponseEntity<>("Sent", HttpStatus.OK);
 		}
 		catch(Exception e) {
@@ -106,7 +105,7 @@ public class templatecontroller {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method=RequestMethod.POST)
+	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public ModelAndView add( @RequestParam String template){
 		ModelAndView model = new ModelAndView("submit");
 		model.addObject("message", template);
