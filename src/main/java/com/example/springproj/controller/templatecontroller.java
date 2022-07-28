@@ -56,6 +56,20 @@ public class templatecontroller {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public ModelAndView list2(){
+		ModelAndView model = new ModelAndView("template_list");
+	    //List<messagetemplate> templateList = temp.getAllTemplates();
+	    List<String> templateList = temp.getAllSeriesNo();
+	    List<String> envList = queue.getEnvNames();
+	    model.addObject("templateList", templateList);
+	    model.addObject("envList", envList);
+	    for(String x:templateList)
+	    	System.out.println(x);
+	    return model;
+	}
+	
+	@ResponseBody
     @RequestMapping(value = "/getMessage", method = RequestMethod.POST)
     public List<String> getMessage(@RequestParam String seriesId) {
         List<String> messageList = temp.getMessageNo(Integer.parseInt(seriesId));
@@ -105,7 +119,7 @@ public class templatecontroller {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/add", method=RequestMethod.GET)
+	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add( @RequestParam String template){
 		ModelAndView model = new ModelAndView("submit");
 		model.addObject("message", template);

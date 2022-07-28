@@ -108,7 +108,7 @@
 	    <div>
 
 
-        <form method="get" th:action="@{/template}" th:object="${template}">
+        <form method="post" th:action="@{/template}" th:object="${template}">
 
 
             <div class="boxa" style=" font-size: larger;text-align: center;">
